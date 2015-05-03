@@ -2,8 +2,8 @@
 buildscript
 {	
 	//Apply common buildscript block (repositories, common plugins etc.)
-	apply from: file("${rootProject.projectDir}/../gradle-common/buildscript.gradle"), to: buildscript
-	apply from: file("${rootProject.projectDir}/../gradle-common/repositories.gradle"), to: buildscript
+	apply from: file("${rootProject.projectDir}/../gradle-base/buildscript.gradle"), to: buildscript
+	apply from: file("${rootProject.projectDir}/../gradle-base/repositories.gradle"), to: buildscript
 	
 	dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
@@ -26,4 +26,4 @@ ext.webProjects = [
 ]
 
 //Apply common build logic to this root project and subprojects based on specified (sub)project type
-apply from: "${rootProject.projectDir}/../gradle-common/base.gradle"
+apply from: "${rootProject.projectDir}/../gradle-base/base.gradle"
