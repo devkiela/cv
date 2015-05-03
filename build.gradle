@@ -1,0 +1,29 @@
+//Buildscript block must be first
+buildscript
+{	
+	//Apply common buildscript block (repositories, common plugins etc.)
+	apply from: file("${rootProject.projectDir}/../gradle-common/buildscript.gradle"), to: buildscript
+	apply from: file("${rootProject.projectDir}/../gradle-common/repositories.gradle"), to: buildscript
+	
+	dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+//Then plugins block
+plugins {
+	id 'net.researchgate.release' version '2.0.2'
+}
+
+ext.javaProjects = [
+
+	project(':cv')
+]
+
+ext.webProjects = [
+
+	project(':cv')
+]
+
+//Apply common build logic to this root project and subprojects based on specified (sub)project type
+apply from: "${rootProject.projectDir}/../gradle-common/base.gradle"
