@@ -26,11 +26,40 @@ body{
   background: #ededed;
   -webkit-print-color-adjust:exact;
 }
+
+/*******************************************
+TOPBAR
+*******************************************/
+@media (min-width: 768px) {
+  .topbar {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .topbar {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .topbar {
+    width: 1170px;
+  }
+}
+
+.topbar{
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 /*******************************************
 CONTAINER
 *******************************************/
 .container{
-  margin-top: 80px;
+  margin-top: 25px;
   margin-bottom: 15px;
   background: #fff;
 }
@@ -39,6 +68,7 @@ PHOTO (AVATAR)
 *******************************************/
 #photo-header{
   margin-top: -75px;
+  pointer-events: none;
 }
 #photo{
   width: 160px;

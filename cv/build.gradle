@@ -9,8 +9,15 @@ configurations {
 dependencies {
 
 	compile libs["spring-boot-starter-web"]
+
+	compile libs["spring-boot-starter-thymeleaf"]
+	compile libs["thymeleaf-extras-data-attribute"]
 	
 	compile libs["spring-boot-starter-log4j2"]
+
+	testCompile libs["spring-test"]
+
+	runtime libs["jackson-dataformat-yaml"]
 	
 	providedRuntime libs["spring-boot-starter-tomcat"]	
 }

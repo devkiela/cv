@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Daniel Barth</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.css}" href="../static/css/font-awesome.css"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css"/>
+    <!--[if lt IE 9]>
+    <script th:src="@{/js/html5shiv.js}" src="../static/js/html5shiv.js"></script>
+    <script th:src="@{/js/respond.min.js}" src="../static/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- Topbar Navigation -->
+          <ul class="loginbar pull-right">
+            <li class="hoverSelector">
+              <i class="fa fa-globe"></i>
+              <a th:text="#{language}">Sprachen</a>
+              <ul class="languages">
+                <li class="active">
+                  <a th:href="@{/(locale=de)}" th:text="#{language.german}">Deutsch <i th:if="${#locale.language} == 'de'" class="fa fa-check"></i></a></li>
+                <li><a th:href="@{/(locale=en)}" th:text="#{language.english}">English <i th:if="${#strings.startsWith(locale.language,'en')}" class="fa fa-check"></i></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- End Topbar -->
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="photo-header" class="text-center">
+            <!-- PHOTO (AVATAR) -->
+            <div id="photo">
+              <img th:src="@{/img/me.jpg}" src="../static/img/me.jpg" alt="avatar"/>
+            </div>
+            <div id="text-header">
+              <h1 th:utext="#{cv.title}">Hallo,<br/> mein Name ist <span>Daniel Barth</span><sup>34</sup> und dies ist mein Lebenslauf</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <!-- ABOUT ME -->
+          <div class="box">
+            <h2 th:text="#{aboutme.title}">Über mich</h2>
+            <p><b th:text="#{aboutme.professional}">Begeisterter Softwareentwickler mit 12 Jahren professioneller Berufserfahrung - stets interessiert an und offen für neue Dinge und Technologien.</b></p>
+			<p th:text="#{aboutme.interests}">Aktuell interessiere ich mich für Service orientierte Architekturen / Micro Services, resilient Software Design, deren Vorteile für Weiterentwicklung und Wartbarkeit sowie das Deployment in  Cloud Umgebungen.</p>
+			<p th:text="#{aboutme.personal}">In agilen Teams mit vielfältigen Aufgaben und gegenseitigem Austausch fühle ich mich am wohlsten.
+			Eine offene Firmenkultur mit Raum für Verbesserung und Weiterentwicklung in einem familienfreundlichen Umfeld schätze nicht nur ich, sondern auch meine Frau und unsere beiden Kinder, 2 Jahre und 6 Monate alt.</p>
+          </div>
+		  <!-- Projects -->
+          <div class="box">
+            <h2 th:text="#{projects.title}">Projekte</h2>
+            <p><b th:text="#{projects.cv.title}">In eigener Sache: Distributed CV</b></p>
+			<p th:utext="#{projects.cv.text}">Unter <i>www.daniel-barth.de</i> entsteht gerade in mehreren Iterationen eine auf Spring Boot basierende Lebenslauf Webapp,
+			die verteilt auf mehrere Cloud Instanzen und teilweise in Docker Containern ausgeführt wird. Der Quellcode ist auf GitHub verfügbar.</p>
+			<p><b th:text="#{projects.rpi.title}">In eigener Sache: Raspberry Pi Cluster</b></p>
+			<p th:text="#{projects.rpi.text}">Zum experimentieren mit Strategien und Techniken zur Ausführung und zum Deployment verteilter Systeme betreibe ich einen Raspberry Pi Cluster mit 12 Knoten.</p>
+          </div>
+             <!-- EXPERIENCES -->
+          <div class="box">
+            <h2 th:text="#{experience.title}">Berufserfahrung</h2>
+            <div class="job clearfix">
+              <div class="col-xs-3">
+                <div class="where">Bardusch GmbH &amp; Co. KG, Ettlingen</div>
+                <div class="year" th:text="|07/2011 - #{experience.latest.year}|">07/2011 - heute</div>
+              </div>
+              <div class="col-xs-9">
+                <div class="profession" th:text="#{experience.4.profession}">Java Entwickler</div>
+                <div class="description" th:utext="#{experience.4.description}">Java Web, Middleware, Backend und Frontend Entwicklung.<br/>
+                    DevOps/CI Integration für Continues Delivery, Gradle und Maven Buildprozesse.<br/>
+                    SAP/Backend Schnittstelle für eine automatische Kleider-Sortieranlage.
+                  </div>
+              </div>
+            </div>
+            <div class="job clearfix">
+              <div class="col-xs-3">
+                <div class="where">Silverstroke GmbH, Ettlingen</div>
+                <div class="year">09/2006 - 06/2011</div>
+              </div>
+              <div class="col-xs-9">
+                <div class="profession">Software Engineer</div>
+                <div class="description" th:utext="#{experience.3.description}">C++: Fernwartungssoftware für Windows.<br/>
+				Java: Servletbasierter Kommunikationsserver.</div>
+              </div>
+            </div>
+              <div class="job clearfix">
+              <div class="col-xs-3">
+                <div class="where">Silverstroke AG, Etttlingen</div>
+                <div class="year">03/2006 - 08/2006</div>
+              </div>
+              <div class="col-xs-9">
+                <div class="profession" th:text="#{experience.2.profession}">Diplomand</div>
+                <div class="description" th:utext="#{experience.2.description}">Master Thesis: "Revisionssicherheit für Fernwartungssysteme“.<br/>
+				Mitarbeit in der Softwareentwicklung.</div>
+              </div>
+            </div>
+              <div class="job clearfix">
+              <div class="col-xs-3">
+                <div class="where">Agrardaten GmbH, Kiel</div>
+                <div class="year">08/2003 - 02/2006</div>
+              </div>
+              <div class="col-xs-9">
+                <div class="profession" th:text="#{experience.1.profession}">Entwickler (Student)</div>
+                <div class="description" th:text="#{experience.1.description}">VBA und Delphi Entwicklung.</div>
+              </div>
+            </div>
+          </div>
+          <!-- EDUCATION -->
+          <div class="box">
+            <h2 th:text="#{education.title}">Ausbildung</h2>
+            <ul id="education" class="clearfix">
+              <li>
+                <div class="year pull-left">2007</div>
+                <div class="description pull-right">
+                  <h3>Master of Business Information Systems</h3>
+                  <p th:text="#{education.fh.kiel}">Fachhochschule Kiel</p>
+                </div>
+              </li>
+              <li>
+                <div class="year pull-left">2004</div>
+                <div class="description pull-right">
+                  <h3>Bachelor of Business Information Systems</h3>
+				  <p th:text="#{education.bachelor.specialization}">Schwerpunkt Software Engineering</p>
+                  <p th:text="#{education.fh.kiel}">Fachhochschule Kiel</p>
+                </div>
+              </li>
+              <li>
+                <div class="year pull-left">2000</div>
+                <div class="description pull-right">
+                  <h3>Abitur</h3>
+                  <p>Ernst Barlach Gymnasium - Kiel</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <!-- CONTACT -->
+          <div class="box clearfix">
+            <h2 th:text="#{contact.title}">Kontakt</h2>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+              <div class="title pull-right">Email</div>
+			  <div class="description pull-right"><a href="mailto:kontakt@daniel-barth.de">kontakt@daniel-barth.de</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-github fa-fw"></span></div>
+              <div class="title pull-right">GitHub</div>
+              <div class="description pull-right"><a href="https://github.com/devkiela">devkiela</a></div>
+            </div>
+			<div class="contact-item">
+             <div class="icon pull-left text-center"><span class="fa fa-twitter fa-fw"></span></div>
+              <div class="title pull-right">Twitter</div>
+              <div class="description pull-right"><a href="https://twitter.com/devkiela">devkiela</a></div>
+            </div>
+			<div class="contact-item">
+			  <div class="icon pull-left text-center"><span class="fa fa-map-marker fa-fw"></span></div>
+              <div class="title pull-right">Region</div>
+              <div class="description pull-right">Karlsruhe</div>
+			</div>
+            <!--div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-pencil fa-fw"></span></div>
+              <div class="title pull-right">Blog</div>
+              <div class="description pull-right"><a href="http://devkiela.blogspot.com">http://devkiela.blogspot.com</a></div>
+            </div-->
+          </div>
+          <!-- SKILLS -->
+          <div class="box">
+            <h2 th:text="#{skills.title}">Kompetenzen</h2>
+            <div class="skills">
+			  <div class="item-skills" data-percent="1.00" th:text="#{skills.agile}">Agile Softwareentwicklung / Clean Code Development</div>
+              <div class="item-skills" data-percent="1.00">Java / Spring</div>
+			  <div class="item-skills" data-percent="0.80">Gradle / Groovy / Maven / SQL / C++</div>
+			  <div class="item-skills" data-percent="0.25">JavaScript</div>
+              <div class="item-skills" data-percent="0.24">HTML5 / CSS3</div>
+			  <div class="item-skills" data-percent="0.15">Docker</div>
+			  <div class="item-skills" data-percent="0.15">Cloud</div>
+              <div class="skills-legend clearfix">
+                <div class="legend-left legend" th:text="#{skills.legend.beginner}">Anfänger</div>
+                <div class="legend-left legend"><span th:text="#{skills.legend.proficient}">Erfahren</span></div>
+                <div class="legend-right legend"><span th:text="#{skills.legend.expert}">Experte</span></div>
+                <div class="legend-right legend" th:text="#{skills.legend.excellent}">Hervorragend</div>
+              </div>
+            </div>
+          </div>
+		  <!-- SOFT SKILLS -->
+          <div class="box">
+            <h2>Soft Skills</h2>
+            <div class="softskill" th:text="#{softskills.team}">Teamfähig</div>
+            <div class="softskill" th:text="#{softskills.motivated}">Intrinsisch motiviert</div>
+            <div class="softskill" th:text="#{softskills.flexible}">Flexibel</div>
+			<div class="softskill" th:text="#{softskills.structured}">Strukturiert</div>
+			<div class="softskill" th:text="#{softskills.responsible}">Verantwortungsbewusst</div>
+			<div class="softskill" th:text="#{softskills.creative}">Kreativ</div>
+			<div class="softskill" th:text="#{softskills.reliable}">Zuverlässig</div>
+			<div class="softskill" th:text="#{softskills.learning}">Lernbegeistert</div>
+          </div>
+          <!-- LANGUAGES -->
+          <div class="box">
+            <h2 th:text="#{languages.title}">Sprachen</h2>
+            <div id="language-skills">
+              <div class="skill"><span th:text="#{languages.german}">Deutsch - Muttersprache</span><div class="icons pull-right"><div style="width: 100%;" class="icons-red"></div></div></div>
+              <div class="skill"><span th:text="#{languages.english}">Englisch - Cambridge FCE Zertifikat, Grade A</span><div class="icons pull-right"><div style="width: 80%;" class="icons-red"></div></div></div>
+            </div>
+          </div>
+          <!-- HOBBIES -->
+          <div class="box">
+            <h2>Hobbies</h2>
+            <div class="hobby" th:text="#{hobbies.heli}">RC Hubschrauber</div>
+            <div class="hobby" th:text="#{hobbies.cooking}">Kochen</div>
+            <div class="hobby" th:text="#{hobbies.it}">Programmierung und IT allgemein</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JQUERY -->
+    <script th:src="@{/js/jquery.min.js}" src="../static/js/jquery.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script th:src="@{/js/bootstrap.min.js}" src="../static/js/bootstrap.min.js"></script>
+    <!-- SCRIPTS -->
+    <script th:src="@{/js/scripts.js}" src="../static/js/scripts.js"></script>
+  </body>
+</html>

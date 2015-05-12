@@ -1,0 +1,56 @@
+status: WARN
+monitorInterval: 30 #sec
+
+properties:
+    property:
+        -
+            name: pattern_layout_console
+            value: "%d - [%t] %-5p - %c - %M(%L) | %m%n"
+
+        -
+            name: pattern_layout_console_no_threads
+            value: "%d - %-5p - %c - %M(%L) | %m%n"
+
+        -
+            name: log_path
+            value: "./logs"
+
+appenders:
+    console:
+        -
+            name: CONSOLE
+            PatternLayout:
+              pattern: "${pattern_layout_console_no_threads}"
+
+    file:
+        -
+            name: DEBUG_FILE
+            fileName: ${log_path}/cv-debug.log
+            PatternLayout:
+                pattern: "${pattern_layout_console}"
+            append: false
+
+        -
+            name: LOG_FILE
+            fileName: ${log_path}/cv.log
+            PatternLayout:
+                pattern: "${pattern_layout_console_no_threads}"
+            append: false
+
+loggers:
+    logger:
+        -
+            name: de.danielbarth
+            additivity: false
+            appenderRef:
+                -
+                    ref: DEBUG_FILE
+                    level: DEBUG
+                -
+                    ref: LOG_FILE
+                    level: INFO
+
+    root:
+        level: INFO
+        appenderRef:
+          ref: CONSOLE
